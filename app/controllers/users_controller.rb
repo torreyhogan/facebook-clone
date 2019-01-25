@@ -7,10 +7,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in(@user)
       flash[:success] = "Account Created"
       redirect_to @user 
     else
-      flash[:failure] = "Error, couldn't create account"
+      flash[:danger] = "Error, couldn't create account"
       render 'new'
     end
   end
