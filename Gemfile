@@ -25,6 +25,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # stores api keys and secrets
 gem 'figaro'
+# sendgrid for production emails
+gem 'sendgrid-ruby'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
