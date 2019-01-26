@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in(@user)
-      flash[:success] = "Account Created"
-      redirect_to @user 
+      @user.send_activation_email 
+      flash[:info] = "Please check your email to activate your account"
+      redirect_to users_path
     else
       flash[:danger] = "Error, couldn't create account"
       render 'new'
@@ -18,10 +18,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    redirect_to root_url and return unless @user.activated
   end
 
   def index
-    @users = User.all 
+    @users = User.where(activated: true)
   end
 
 
