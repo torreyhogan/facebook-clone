@@ -10,6 +10,9 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum:6 }
 
+	has_many :sent_friend_requests, :foreign_key => "sender_id", :class_name => "FriendRequest"
+	has_many :received_friend_reqeusts, :foreign_key => "receiver_id", :class_name => "FriendRequest"
+
  # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
