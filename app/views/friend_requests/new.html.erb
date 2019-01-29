@@ -1,3 +1,8 @@
 <h2>Send Friend Request</h2>
 
-<%= form_for @
+<%= form_for @friendrequest do |f| %>
+	<%= f.label :receiver_id %>
+	<%= f.text_field :receiver_id %>
+
+	<%= f.submit "Send Friend Request" %>
+<% end %>

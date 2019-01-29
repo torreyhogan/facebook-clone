@@ -1,0 +1,21 @@
+<% if @friend_requests_received.any? %>
+	<p>Friend Requests Recieved:</p>
+	<ul>
+		<% @friend_requests_received.each do |request| %>
+			<li><%= request.sender.name %>
+
+			</li>
+		<% end %>
+	</ul>
+<% end %>
+
+<% if @friend_requests_sent.any? %>
+	<p>Friend Requests Sent:</p>
+	<ul>
+		<% @friend_requests_sent.each do |request| %>
+			<li><%= request.receiver.name %>
+
+			</li>
+		<% end %>
+	</ul>
+<% end %>

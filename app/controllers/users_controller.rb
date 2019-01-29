@@ -20,10 +20,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     redirect_to root_url and return unless @user.activated
+    @friend_requests_received = FriendRequest.where(receiver_id: @user.id)
+    @friend_requests_sent = FriendRequest.where(sender_id: @user.id)
   end
 
   def index
-    @users = User.where(activated: true)
+    @users = User.where(activated: true).where.not(id: current_user.id)
+    @friendrequest = FriendRequest.new
   end
 
 
