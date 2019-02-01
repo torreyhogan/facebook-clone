@@ -1,19 +1,21 @@
-<% if @friend_requests_received.any? %>
+<% if @friend_requests_received %>
+<h3>Notifications</h3>
 	<p>Friend Requests Recieved:</p>
 	<ul>
 		<% @friend_requests_received.each do |request| %>
 			<li><%= request.sender.name %>
-
+				<%= link_to "Accept Friend Request", friendships_path(:friend_id => request.id), method: :post %>
 			</li>
 		<% end %>
 	</ul>
 <% end %>
 
-<% if @friend_requests_sent.any? %>
+<% if @friend_requests_sent %>
 	<p>Friend Requests Sent:</p>
 	<ul>
 		<% @friend_requests_sent.each do |request| %>
-			<li><%= request.receiver.name %>
+			<li><%= request.receiver.name %> 
+				<%= link_to "Delete friend request", request, :method => :delete  %>
 
 			</li>
 		<% end %>

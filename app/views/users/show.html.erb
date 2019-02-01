@@ -3,5 +3,15 @@
 <h3><%= @user.name %></h3>
 <h3><%= @user.email %></h3>
 
-<h3>Notifications</h3>
+
 <%= render 'friend_requests' %>
+
+
+<% if @friends %>
+<h3>Friends: </h3>
+	<ul>
+		<% @friends.each do | friend | %>
+			<li><%= link_to friend.name, friend %></li>
+		<% end %>
+	</ul>
+<% end %>

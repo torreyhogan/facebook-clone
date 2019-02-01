@@ -11,7 +11,7 @@ class User < ApplicationRecord
 	validates :password, presence: true, length: { minimum:6 }
 
 	has_many :sent_friend_requests, :foreign_key => "sender_id", :class_name => "FriendRequest"
-	has_many :received_friend_reqeusts, :foreign_key => "receiver_id", :class_name => "FriendRequest"
+	has_many :received_friend_requests, :foreign_key => "receiver_id", :class_name => "FriendRequest"
 
 	has_many :friendships
 	has_many :friends, :through => :friendships

@@ -15,5 +15,20 @@
 		password_confirmation: 'foobar',
 		activated: true
 		)
-	
+end
+
+User.create(
+	name: "Torrey",
+	email: "torrey@email.com",
+	password: 'foobar',
+	password_confirmation: 'foobar',
+	activated: true
+		)
+
+4.times do 
+	FriendRequest.create( 
+		sender_id: rand(1..10),
+		receiver_id: 11
+		)
+		
 end
