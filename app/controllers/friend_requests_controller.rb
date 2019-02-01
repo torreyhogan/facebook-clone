@@ -15,8 +15,8 @@ class FriendRequestsController < ApplicationController
 	end
 
 	def destroy
-		@friendrequest = FriendRequest.where(receiver_id: params[:friend_id], sender_id: current_user.id) || 
-			FriendRequest.where(receiver_id: current_user.id, sender_id: params[:friend_id])
+		@friendrequest = current_user.sent_friend_requests.find(params[:id])
+			
     @friendrequest.destroy
     flash[:notice] = "Friend request denied"
     redirect_to current_user
