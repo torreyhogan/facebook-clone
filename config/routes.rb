@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   # post 'friendships/create', to: 'friendships#create'
-  # delete 'friendships/destroy', to: 'friendships#destroy'
+  delete 'friendships/destroy', to: 'friendships#destroy'
   # get 'friend_requests/destroy'
 	root to: 'welcome#index'
  	get '/login', 				to: 'sessions#new'
  	post '/login', 				to: 'sessions#create'
  	delete '/logout', 		to: 'sessions#destroy'
  	get '/signup', 				to: 'users#new'
- 	# get 'friend_requests/destroy' to: 'friend_reqeusts#destroy'
   resources :users
   resources :account_activations, only: [:edit]
   resources :friend_requests, only: [:new, :create, :destroy ]

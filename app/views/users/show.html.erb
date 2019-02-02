@@ -1,17 +1,21 @@
-<h1>User Profile</h1>
+<br>
+<h2>User Profile</h2>
 
-<h3><%= @user.name %></h3>
-<h3><%= @user.email %></h3>
-
-
-<%= render 'friend_requests' %>
-
+<p>Name: <%= @user.name %></p>
+<p>Email: <%= @user.email %></>
+<br><br>
 
 <% if @friends %>
-<h3>Friends: </h3>
+	<h3>Friends: </h3>
 	<ul>
 		<% @friends.each do | friend | %>
-			<li><%= link_to friend.name, friend %></li>
+			<li><%= link_to friend.name, friend %>  
+				(<%= link_to "Unfriend", friendship_path(friend_id: friend.id), :method => :delete  %>)</li>
 		<% end %>
 	</ul>
 <% end %>
+
+<br>
+
+<%= render 'friend_requests' %>
+

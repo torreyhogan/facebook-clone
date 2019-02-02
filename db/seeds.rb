@@ -25,10 +25,15 @@ User.create(
 	activated: true
 		)
 
-4.times do 
+5.times do 
+	sender = rand(1..10)
 	FriendRequest.create( 
-		sender_id: rand(1..10),
+		sender_id: sender,
 		receiver_id: 11
+		)
+	FriendRequest.create(
+		sender_id: 11,
+		receiver_id: sender
 		)
 		
 end

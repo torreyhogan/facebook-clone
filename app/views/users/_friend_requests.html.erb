@@ -4,8 +4,8 @@
 	<ul>
 		<% @friend_requests_received.each do |request| %>
 			<li><%= request.sender.name %>
-				<%= link_to "Accept Friend Request", friendships_path(:friend_id => request.id), method: :post %>
-			</li>
+				<%= link_to "Accept Friend Request", friendships_path(friend_id: request.sender.id), method: :post %>
+					</li>
 		<% end %>
 	</ul>
 <% end %>

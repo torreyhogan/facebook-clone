@@ -18,7 +18,7 @@ class FriendRequestsController < ApplicationController
 		@friendrequest = current_user.sent_friend_requests.find(params[:id])
 			
     @friendrequest.destroy
-    flash[:notice] = "Friend request denied"
+    flash[:notice].now = "Friend request denied"
     redirect_to current_user
 		
 	end

@@ -2,14 +2,14 @@
 <ul>
 	<% @users.each do |user| %>
 		<li><%= link_to(user.name, user) %>
-			<% if @friends.include?(user) %>
-				<%= link_to "Unfriend", friendships_path(:friend_id => user.id), method: :destroy %>
+			<% if @friends.include?(user)%>
+				 <%= link_to "Unfriend", friendships_destroy_path(friend_id: user.id), method: :delete %>
 			<% elsif @sent_requests.include?(user) %>
-				<%= link_to "Delete friend request", current_user.sent_friend_requests.find_by(receiver_id: user.id), method: :delete %>
+				<%= link_to "delete friend request", current_user.sent_friend_requests.find_by(receiver_id: user.id), method: :delete %>
 			<% elsif @received_requests.include?(user) %>
-				<%= link_to "Accept Friend Request", friendships_path(friend_id: user.id), :method => :post %>
+				<%= link_to "acccept Friend Request", friendships_path(friend_id: user.id), :method => :post %>
 			<% else %>
-				<%= link_to "Friend Request", friend_requests_path(:receiver_id => user.id), :method => :post %>
+				<%= link_to "send riend Request", friend_requests_path(:receiver_id => user.id), :method => :post %>
 			<% end %>
 		</li>
 	<% end %>
