@@ -3,7 +3,7 @@
 	<p>Friend Requests Recieved:</p>
 	<ul>
 		<% @friend_requests_received.each do |request| %>
-			<li><%= request.sender.name %>
+			<li><%= link_to(request.sender.name, request.sender) %>
 				<%= link_to "Accept Friend Request", friendships_path(friend_id: request.sender.id), method: :post %>
 					</li>
 		<% end %>
@@ -14,7 +14,7 @@
 	<p>Friend Requests Sent:</p>
 	<ul>
 		<% @friend_requests_sent.each do |request| %>
-			<li><%= request.receiver.name %> 
+			<li><%= link_to(request.receiver.name, request.receiver) %> 
 				<%= link_to "Delete friend request", request, :method => :delete  %>
 
 			</li>

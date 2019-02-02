@@ -31,8 +31,8 @@ class UsersController < ApplicationController
   def index
     @users = User.where(activated: true).where.not(id: current_user.id)
     @friends = current_user.friends 
-    @sent_requests = FriendRequest.where(sender_id: current_user.id).map { |x| x.receiver}#current_user.sent_friend_requests.receiver
-    @received_requests = FriendRequest.where(receiver_id: current_user.id).map { |x| x.sender }#current_user.received_friend_reqeusts.sender
+    @requests_sent = current_user.sent_friend_requests.map { |x| x.receiver}
+    @requests_received = current_user.received_friend_requests.map { |x| x.sender }
   end
 
 

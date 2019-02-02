@@ -3,13 +3,13 @@
 	<% @users.each do |user| %>
 		<li><%= link_to(user.name, user) %>
 			<% if @friends.include?(user)%>
-				 <%= link_to "Unfriend", friendships_destroy_path(friend_id: user.id), method: :delete %>
-			<% elsif @sent_requests.include?(user) %>
+				 <%= link_to "unfriend", friendships_destroy_path(friend_id: user.id), method: :delete %>
+			<% elsif @requests_sent.include?(user) %>
 				<%= link_to "delete friend request", current_user.sent_friend_requests.find_by(receiver_id: user.id), method: :delete %>
-			<% elsif @received_requests.include?(user) %>
-				<%= link_to "acccept Friend Request", friendships_path(friend_id: user.id), :method => :post %>
+			<% elsif @requests_received.include?(user) %>
+				<%= link_to "acccept friend request", friendships_path(friend_id: user.id), :method => :post %>
 			<% else %>
-				<%= link_to "send riend Request", friend_requests_path(:receiver_id => user.id), :method => :post %>
+				<%= link_to "send friend Request", friend_requests_path(:receiver_id => user.id), :method => :post %>
 			<% end %>
 		</li>
 	<% end %>

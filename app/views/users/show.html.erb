@@ -10,12 +10,14 @@
 	<ul>
 		<% @friends.each do | friend | %>
 			<li><%= link_to friend.name, friend %>  
-				(<%= link_to "Unfriend", friendship_path(friend_id: friend.id), :method => :delete  %>)</li>
+
+				<%= link_to "Unfriend", friendship_path(friend_id: friend.id), :method => :delete  if @user == current_user%></li>
 		<% end %>
 	</ul>
 <% end %>
 
 <br>
+
 
 <%= render 'friend_requests' %>
 
