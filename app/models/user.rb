@@ -10,14 +10,16 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true, length: { minimum:6 }
 
-	has_many :sent_friend_requests, :foreign_key => "sender_id", :class_name => "FriendRequest"
-	has_many :received_friend_requests, :foreign_key => "receiver_id", :class_name => "FriendRequest"
+	has_many :sent_friend_requests, :foreign_key => "sender_id", :class_name => "FriendRequest" , dependent: :destroy
+	has_many :received_friend_requests, :foreign_key => "receiver_id", :class_name => "FriendRequest", dependent: :destroy
 
-	has_many :friendships
+	has_many :friendships , dependent: :destroy
 	has_many :friends, :through => :friendships
 
 	has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => :friend_id
 	has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+
+	has_many :posts, foreign_key: :author_id, dependent: :destroy
 
  # Returns the hash digest of the given string.
   def User.digest(string)

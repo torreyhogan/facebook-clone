@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       
     end
     @friends = @user.friends
+    @posts = @user.posts.sort_by{|x| x.created_at }.reverse
   end
 
   def index

@@ -4,6 +4,14 @@
 <p>Name: <%= @user.name %></p>
 <p>Email: <%= @user.email %></>
 <br><br>
+<h3><%= link_to "Create new post", new_post_path if current_user == @user %></h3>
+
+
+
+<h3>Posts: </h3>
+<% if @posts.any? %>
+	<%= render @posts %>
+<% end %>
 
 <% if @friends %>
 	<h3>Friends: </h3>

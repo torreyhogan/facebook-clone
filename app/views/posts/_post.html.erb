@@ -1,0 +1,5 @@
+<li>
+	<span><%= link_to post.author.name, post.author %>  </span>
+	<span><%= post.content %></span>
+	<span>Posted <%= time_ago_in_words(post.created_at) %></span>
+</li>

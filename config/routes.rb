@@ -8,6 +8,7 @@ Rails.application.routes.draw do
  	delete '/logout', 		to: 'sessions#destroy'
  	get '/signup', 				to: 'users#new'
   resources :users
+  resources :posts
   resources :account_activations, only: [:edit]
   resources :friend_requests, only: [:new, :create, :destroy ]
   resources :friendships, only: [:new, :create, :destroy]
