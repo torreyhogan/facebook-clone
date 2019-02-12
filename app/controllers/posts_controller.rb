@@ -20,13 +20,20 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		@like = @post.likes.find_by(user_id: current_user.id)
+		@like ||= current_user.likes.build
+		@comment = current_user.comments.build(post_id: @post.id)
 	end
 
 	def index
-		@posts = Post.all.sort_by{|x| x.created_at}.reverse
+		friend_id = current_user.friends.map {|friend| friend.id }
+		posts = Post.where(author_id: friend_id)
+		@posts = posts.sort_by{|x| x.created_at}.reverse
 	end
 
 	def destroy
+		@post = current_user.posts.find_by(post_id: params[:post_id])
+		
 	end
 
 

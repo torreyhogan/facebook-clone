@@ -1,5 +1,13 @@
 <li>
-	<span><%= link_to post.author.name, post.author %>  </span>
+	<span><%= link_to post.author.name, post %>  </span>
 	<span><%= post.content %></span>
 	<span>Posted <%= time_ago_in_words(post.created_at) %></span>
+	<span>Likes: <%= post.likes.count %></span>
+	<span>
+		<% if current_user.likes.find_by(post_id: post.id) %>
+<%= link_to 'Unlike', likes_path(post_id: post.id), method: :delete %>
+<% else %>
+	<%= link_to 'Like', likes_path(post_id: post.id), method: :post %>
+<% end %>
+	</span>
 </li>

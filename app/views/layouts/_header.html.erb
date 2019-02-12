@@ -1,13 +1,22 @@
-<h3>Fakebook</h3>
-<ul>
-	<li><%= link_to "Home", "#" %></li>
-	<% if logged_in? %>
-		<li><%= link_to "Profile", current_user %></li>
-		<li><%= link_to "Users", users_path %></li>
-		<li><%= link_to "Log out", logout_path, method: :delete %></li>
-	<% else %>
-		<li><%= link_to "Log in", login_path %></li>
-		<li><%= link_to "Create account", signup_path %></li>
+<header>
 	
-	<% end %>
-</ul>
+		<ul>
+			<li id="logo"><%= link_to "Fakebook", root_path %></li>
+			<span id="user_settings">
+				<% if logged_in? %>
+					
+						<li><%= link_to "Profile", current_user %></li>
+						<li><%= link_to "Settings", edit_user_path(current_user) %></li>
+						<li><%= link_to "Users", users_path %></li>
+						<li><%= link_to "Posts", posts_path %></li>
+
+						<li><%= link_to "Log out", logout_path, method: :delete %></li>
+				<% else %>
+					<li><%= link_to "Log in", login_path %></li>
+					<li><%= link_to "Create account", signup_path %></li>
+				
+				<% end %>
+			</span>
+		</ul>
+	
+</header>

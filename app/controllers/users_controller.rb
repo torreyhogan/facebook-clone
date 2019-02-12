@@ -29,6 +29,20 @@ class UsersController < ApplicationController
     @posts = @user.posts.sort_by{|x| x.created_at }.reverse
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+    else 
+      render 'edit'
+    end
+  end
+
   def index
     @users = User.where(activated: true).where.not(id: current_user.id)
     @friends = current_user.friends 
@@ -41,6 +55,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :profile_pic)
     end
 end

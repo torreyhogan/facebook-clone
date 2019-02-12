@@ -1,0 +1,66 @@
+/* universal*/
+
+body {
+  /*padding-top: 60px;*/
+  font-family: 'Titillium Web', sans-serif;
+  background-color: rgb(232,235,207);
+}
+
+/* Heading */
+
+header {
+	padding-top: 0px;
+	background-color: rgb(69,87,121); 
+	color: white;
+	border: 0;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	height: 90px;
+
+	a {
+		color: white;
+		text-decoration: none;
+		padding: 10px;
+		border-bottom: 5px;
+
+	}
+	ul {
+		margin: 0;
+		padding-right: 10px;
+	}
+
+	ul li {
+		display: inline;
+	}
+
+	#user_settings {
+		float: right;
+		padding-top: 60px;
+	}
+
+	#logo {
+		font-size: 60px;
+		padding: 5px;
+		float: left;
+	}
+
+}
+
+ul {
+		color: white;
+		text-decoration: none;
+	}
+
+/* content */
+
+div {
+	margin-top: 90px;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+}

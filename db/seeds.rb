@@ -37,3 +37,10 @@ User.create(
 		)
 		
 end
+
+100.times do
+	author = rand(1..11)
+	Post.create(
+		author_id: author,
+		content: "hey buddy pal")
+end

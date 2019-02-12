@@ -1,3 +1,32 @@
 <h3>Post</h3>
 <p>Author: <%= @post.author.name %></p>
 <p>Content:<br><%= @post.content %></p>
+<p>likes: <%= @post.likes.count %></p>
+
+<% if current_user.likes.find_by(post_id: @post.id) %>
+<p><%= link_to 'Unlike', likes_path(post_id: @post.id), method: :delete %></p>
+<% else %>
+	<p><%= link_to 'Like', likes_path(post_id: @post.id), method: :post %></p>
+<% end %>
+
+
+
+<% if @post.comments.any? %>
+
+	
+		<%= render @post.comments %>
+<% end %>
+
+<p>Comment: </p>
+<%= form_for @comment do |f|  %>
+	
+	<%= f.text_area :content %>
+	<%= f.hidden_field(:post_id, value: @post.id) %>
+
+	<%= f.submit "Comment" %>
+
+<% end %>
+
+
+
+
